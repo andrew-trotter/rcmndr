@@ -23,19 +23,19 @@ export const routes = createRoutesFromElements(
     <Route index element={<Home />} />
     <Route
       path="find-friends"
-      element={<Suspense fallback='test'><ProtectedComponent component={FindFriends} /></Suspense>}
+      element={<Suspense fallback='findFriends test'><ProtectedComponent component={FindFriends} /></Suspense>}
     />
     <Route
       path="my-friends"
-      element={<ProtectedComponent component={MyFriends} />}
+      element={<Suspense fallback='MyFriends test'><ProtectedComponent component={MyFriends} /></Suspense>}
     />
     <Route
       path="profile"
-      element={<ProtectedComponent component={ProfilePage} />}
+      element={<Suspense fallback='ProfilePage test'><ProtectedComponent component={ProfilePage} /></Suspense>}
     />
     <Route
       path="my-songs"
-      element={<ProtectedComponent component={MySongs} />}
+      element={<Suspense fallback='MySongs test'><ProtectedComponent component={MySongs} /></Suspense>}
     />
   </Route>
 )
@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }}
     >
       <QueryClientProvider client={queryClient}>
-        <AppProvider />
+        <Suspense>
+          <AppProvider />
+        </Suspense>
       </QueryClientProvider>
     </Auth0Provider>
   )
