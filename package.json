@@ -11,7 +11,7 @@
     "dev:css": "tailwindcss -i client/styles/main.css -o public/main.css --watch",
     "test": "vitest",
     "build": "run-s vite:build build:css",
-    "build:css": "tailwindcss -i client/styles/main.css -o public/main.css",
+    "build:css": "tailwindcss -i client/styles/main.css -o dist/main.css",
     "vite:build": "vite build",
     "preview": "vite preview",
     "knex": "knex --knexfile ./server/db/knexfile.js",
