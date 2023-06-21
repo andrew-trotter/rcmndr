@@ -21,7 +21,6 @@ test('If button is on the page', async () => {
   })
 
   expect(button).toBeInTheDocument()
-
 })
 
 test('If button redirects to root route', async () => {

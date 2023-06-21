@@ -2,20 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import HomeButton from './HomeButton'
 import Background from '../Background/Background'
+import { MemoryRouter } from 'react-router-dom'
 
 const meta: Meta<typeof HomeButton> = {
-  title: 'ErrorPage Button',
+  title: 'Home Button',
   component: HomeButton,
 }
 
 type Story = StoryObj<typeof HomeButton>
 
-export const MyPrimary: Story = {
-  name: 'Home Button',
+export const MyHomeButton: Story = {
+  name: 'Home',
   render: () => (
-    <Background>
-      <HomeButton></HomeButton>,
-    </Background>
+    <MemoryRouter initialEntries={['/some-invalid-path']}>
+      <Background>
+        <HomeButton />
+      </Background>
+    </MemoryRouter>
   ),
 }
 
