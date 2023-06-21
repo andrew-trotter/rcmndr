@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import ErrorPageButton from './ErrorPageButton'
+import HomeButton from './HomeButton'
 import Background from '../Background/Background'
 
-const meta: Meta<typeof ErrorPageButton> = {
+const meta: Meta<typeof HomeButton> = {
   title: 'ErrorPage Button',
-  component: ErrorPageButton,
+  component: HomeButton,
 }
 
-type Story = StoryObj<typeof ErrorPageButton>
+type Story = StoryObj<typeof HomeButton>
 
 export const MyPrimary: Story = {
-  name: 'Button',
+  name: 'Home Button',
   render: () => (
     <Background>
-      <ErrorPageButton></ErrorPageButton>,
+      <HomeButton></HomeButton>,
     </Background>
   ),
 }

@@ -1,3 +1,5 @@
+import HomeButton from '../../components/UI/HomeButton/HomeButton'
+
 function ErrorPage() {
   return (
     <>
@@ -6,11 +8,7 @@ function ErrorPage() {
           <i className="fa-2xl fa-solid fa-triangle-exclamation text-pink-500"></i>
         </div>
         <p className="text-sm">Something went wrong</p>
-        <button className="bg-white rounded-lg py-2 px-4 text-pink-500 w-20 hover:text-white hover:bg-pink-500 hover:shadow-[0px_0px_9px_2px_#FF17CE]">
-          <a className="font-bold" href="/">
-            Home
-          </a>
-        </button>
+        <HomeButton />
       </div>
     </>
   )
