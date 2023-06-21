@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import React, {Suspense, lazy} from 'react'
 import {
   RouterProvider,
   createBrowserRouter,
@@ -18,10 +19,11 @@ import MySongs from './Pages/MySongs/MySongs'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
+    
     <Route index element={<Home />} />
     <Route
       path="find-friends"
-      element={<ProtectedComponent component={FindFriends} />}
+      element={<Suspense fallback='test'><ProtectedComponent component={FindFriends} /></Suspense>}
     />
     <Route
       path="my-friends"
