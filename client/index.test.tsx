@@ -1,10 +1,9 @@
 //@vitest-environment jsdom
-import { afterEach, expect, it, test } from 'vitest'
+import { expect, test } from 'vitest'
 import { Suspense, lazy,  } from "react"
-import { cleanup, render, screen, waitFor } from "@testing-library/react"
-import matchers from '@testing-library/jest-dom/matchers'
-import { debug, log } from 'console'
-const LazyComponent = lazy(() => import("./Pages/MyFriends/MyFriends"))
+import { render, screen, waitFor } from "@testing-library/react"
+import { debug } from 'console'
+const LazyComponent = lazy(() => import("./components/TestLazyComponent"))
 
 function Main() {
   return(
@@ -15,8 +14,6 @@ function Main() {
   )
 }
 
-afterEach(cleanup)
-
 test('renders lazy', async () => {
     render(
     <Suspense fallback='loading'>
@@ -24,9 +21,8 @@ test('renders lazy', async () => {
     </Suspense>
   )
   await waitFor(() => {
-  const result = screen.getByText('My existing friends');
-  
+  const result = screen.getByText('Test');
   debug()
-    expect(result.textContent).toBe('My existing friends');
+    expect(result.textContent).toBe('Test');
   });
 });
