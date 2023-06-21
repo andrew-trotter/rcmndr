@@ -1,4 +1,4 @@
-exports.up = async function(knex) {
+exports.up = async function (knex) {
   await knex.schema.createTable('users', (table) => {
     table.string('auth0_id').primary()
     table.string('email').primary()
@@ -6,9 +6,10 @@ exports.up = async function(knex) {
     table.string('first_name').notNullable()
     table.string('last_name').notNullable()
     table.boolean('public')
+    table.index(['auth0_id'], 'idx_auth0_id')
   })
 }
 
-exports.down = async function(knex) {
+exports.down = async function (knex) {
   await knex.schema.dropTable('users')
 }
