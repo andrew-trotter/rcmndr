@@ -7,6 +7,7 @@ exports.up = async function (knex) {
     table.string('last_name').notNullable()
     table.boolean('public')
     table.index(['auth0_id'], 'idx_auth0_id')
+    table.index(['public'], 'idx_public')
   })
 }
 
