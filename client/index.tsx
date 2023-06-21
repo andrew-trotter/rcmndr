@@ -11,11 +11,11 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
-import ProfilePage from './Pages/ProfilePage/ProfilePage'
 import Home from './Pages/Home/Home'
-import MyFriends from './Pages/MyFriends/MyFriends'
-import FindFriends from './Pages/FindFriends/FindFriends'
-import MySongs from './Pages/MySongs/MySongs'
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage')) 
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
+const MySongs = lazy(() => import('./Pages/MySongs/MySongs')) 
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>

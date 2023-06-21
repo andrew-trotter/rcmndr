@@ -1,7 +1,7 @@
-import { Suspense, useState } from 'react'
+import { Suspense, lazy, useState } from 'react'
 
 import Logo from '../Logo/Logo'
-import Nav from '../Nav/Nav'
+const Nav = lazy(() => import('../Nav/Nav'))
 
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
@@ -35,8 +35,8 @@ function Header() {
         className={`fixed left-0 top-12 h-full w-full backdrop-filter backdrop-blur-md bg-opacity-5 shadow-transparent transition-all ease-in-out duration-200 ${
           navOpened ? 'opacity-100' : 'hidden'
         }`}
-      ><Suspense fallback='loading'>
-        
+      >
+        <Suspense>        
           <Nav toggleMenu={toggleMenu} />
       </Suspense>
       </nav>
