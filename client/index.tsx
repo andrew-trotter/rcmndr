@@ -15,9 +15,10 @@ import Home from './Pages/Home/Home'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
 import MySongs from './Pages/MySongs/MySongs'
+import ErrorPage from './Pages/ErrorPage/ErrorPage'
 
 export const routes = createRoutesFromElements(
-  <Route path="/" element={<AppLayout />}>
+  <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
     <Route
       path="find-friends"
