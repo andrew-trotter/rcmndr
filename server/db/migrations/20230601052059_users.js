@@ -8,6 +8,7 @@ exports.up = async function (knex) {
     table.boolean('public')
     table.index(['auth0_id'], 'idx_auth0_id')
     table.index(['public'], 'idx_public')
+    table.index(['nickname'], 'idx_nickname')
   })
 }
 
