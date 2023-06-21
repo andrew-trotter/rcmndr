@@ -10,6 +10,7 @@ exports.up = async function (knex) {
     table.index(['public'], 'idx_public')
     table.index(['nickname'], 'idx_nickname')
     table.index(['first_name'], 'idx_first_name')
+    table.index(['last_name'], 'idx_last_name')
   })
 }
 
