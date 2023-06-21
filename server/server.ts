@@ -8,7 +8,7 @@ import notifications from './routes/notifications'
 const server = express()
 
 server.use(express.json())
-server.use(express.static(join(__dirname, 'public')))
+server.use(express.static(join(__dirname, '..', 'public')))
 server.use(express.static(join(__dirname, '..', 'dist')))
 
 server.use('/api/v1/users', userRouter)
