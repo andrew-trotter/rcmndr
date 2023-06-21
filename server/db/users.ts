@@ -1,6 +1,7 @@
 import db from './connection'
 import { Friend } from '../../types/User'
 import { Profile, ProfileDraft } from '../../types/Profile'
+import { SongDraft } from '../../types/Song'
 
 export async function getUser(auth0Id: string) {
   return (await db('users')
@@ -86,4 +87,8 @@ OR LOWER(s.genre) LIKE ?)
   ])
 
   return newUsersToFollow as Friend[]
+}
+
+export async function insertSong(songData: SongDraft) {
+  return db('songs').insert(songData)
 }
