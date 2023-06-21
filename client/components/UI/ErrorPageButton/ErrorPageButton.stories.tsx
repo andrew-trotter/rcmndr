@@ -11,7 +11,7 @@ const meta: Meta<typeof ErrorPageButton> = {
 type Story = StoryObj<typeof ErrorPageButton>
 
 export const MyPrimary: Story = {
-  name: 'Button to home',
+  name: 'Button',
   render: () => (
     <Background>
       <ErrorPageButton></ErrorPageButton>,
