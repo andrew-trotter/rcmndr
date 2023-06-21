@@ -7,6 +7,7 @@ exports.up = async function (knex) {
     table.string('genre')
     table.string('link')
     table.string('comments')
+    table.index(['genre'], 'idx_genre')
   })
 }
 
