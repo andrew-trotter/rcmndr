@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { Suspense, lazy, useState } from 'react'
 
 import Logo from '../Logo/Logo'
-import Nav from '../Nav/Nav'
+import Loading from '../Loading/Loading'
+const Nav = lazy(() => import('../Nav/Nav'))
 
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
@@ -36,7 +37,9 @@ function Header() {
           navOpened ? 'opacity-100' : 'hidden'
         }`}
       >
-        <Nav toggleMenu={toggleMenu} />
+        <Suspense fallback={<Loading />}>        
+          <Nav toggleMenu={toggleMenu} />
+      </Suspense>
       </nav>
     </div>
   )

@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import {Suspense, lazy} from 'react'
 import {
   RouterProvider,
   createBrowserRouter,
@@ -10,30 +11,32 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
-import ProfilePage from './Pages/ProfilePage/ProfilePage'
 import Home from './Pages/Home/Home'
-import MyFriends from './Pages/MyFriends/MyFriends'
-import FindFriends from './Pages/FindFriends/FindFriends'
-import MySongs from './Pages/MySongs/MySongs'
+import Loading from './components/Loading/Loading'
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage')) 
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
+const MySongs = lazy(() => import('./Pages/MySongs/MySongs')) 
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
+    
     <Route index element={<Home />} />
     <Route
       path="find-friends"
-      element={<ProtectedComponent component={FindFriends} />}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={FindFriends} /></Suspense>}
     />
     <Route
       path="my-friends"
-      element={<ProtectedComponent component={MyFriends} />}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={MyFriends} /></Suspense>}
     />
     <Route
       path="profile"
-      element={<ProtectedComponent component={ProfilePage} />}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={ProfilePage} /></Suspense>}
     />
     <Route
       path="my-songs"
-      element={<ProtectedComponent component={MySongs} />}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={MySongs} /></Suspense>}
     />
   </Route>
 )
@@ -61,7 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }}
     >
       <QueryClientProvider client={queryClient}>
-        <AppProvider />
+        <Suspense>
+          <AppProvider />
+        </Suspense>
       </QueryClientProvider>
     </Auth0Provider>
   )
