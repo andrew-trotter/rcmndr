@@ -1,6 +1,7 @@
 import { Suspense, lazy, useState } from 'react'
 
 import Logo from '../Logo/Logo'
+import Loading from '../Loading/Loading'
 const Nav = lazy(() => import('../Nav/Nav'))
 
 function Header() {
@@ -36,7 +37,7 @@ function Header() {
           navOpened ? 'opacity-100' : 'hidden'
         }`}
       >
-        <Suspense>        
+        <Suspense fallback={<Loading />}>        
           <Nav toggleMenu={toggleMenu} />
       </Suspense>
       </nav>

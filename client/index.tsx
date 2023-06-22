@@ -12,6 +12,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
 import Home from './Pages/Home/Home'
+import Loading from './components/Loading/Loading'
 const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage')) 
 const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
 const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
@@ -23,19 +24,19 @@ export const routes = createRoutesFromElements(
     <Route index element={<Home />} />
     <Route
       path="find-friends"
-      element={<Suspense fallback='findFriends test'><ProtectedComponent component={FindFriends} /></Suspense>}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={FindFriends} /></Suspense>}
     />
     <Route
       path="my-friends"
-      element={<Suspense fallback='MyFriends test'><ProtectedComponent component={MyFriends} /></Suspense>}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={MyFriends} /></Suspense>}
     />
     <Route
       path="profile"
-      element={<Suspense fallback='ProfilePage test'><ProtectedComponent component={ProfilePage} /></Suspense>}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={ProfilePage} /></Suspense>}
     />
     <Route
       path="my-songs"
-      element={<Suspense fallback='MySongs test'><ProtectedComponent component={MySongs} /></Suspense>}
+      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={MySongs} /></Suspense>}
     />
   </Route>
 )
