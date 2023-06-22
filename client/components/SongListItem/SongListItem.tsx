@@ -10,7 +10,7 @@ interface Props {
 function SongListItem(props: Props) {
   const { song, handleDeleteSong, handleEditSong } = props
   return (
-    <li className="list-none flex gap-4">
+    <li className="list-none flex gap-4 py-1.5">
       <div className="self-center flex-none">
         <Icon>
           <i className="fa-solid fa-play text-black" />
