@@ -1,4 +1,6 @@
 import express from 'express'
+
+import { validateAccessToken } from '../auth0'
 import { songDraftSchema } from '../../types/Song'
 import * as usersDb from '../db/users'
 
@@ -8,11 +10,17 @@ const router = express.Router()
 
 // POST /api/v1/songs
 
-router.post('/', async (req, res) => {
+router.post('/', validateAccessToken, async (req, res) => {
   try {
-    const input = req.body
+    const id = req.auth?.payload.sub
+    if (id === undefined) {
+      res.status(500).json({ error: 'Could not authenticate!' })
+      return
+    }
+
+    const input = { ...req.body, userId: id }
     const songData = songDraftSchema.parse(input)
-    console.log(songData)
+
     usersDb.insertSong(songData)
     res.sendStatus(201)
   } catch (error) {

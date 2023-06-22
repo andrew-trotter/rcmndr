@@ -90,5 +90,11 @@ OR LOWER(s.genre) LIKE ?)
 }
 
 export async function insertSong(songData: SongDraft) {
-  return db('songs').insert(songData)
+  const { userId, ...rest } = songData
+  console.log(rest)
+  const newSong = {
+    user_id: userId,
+    ...rest,
+  }
+  await db('songs').insert(newSong)
 }
