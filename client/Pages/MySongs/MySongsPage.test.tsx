@@ -62,7 +62,7 @@ test.only('MySongsPage fetches a song array', async () => {
   ]
 
   // intercept http requests to respond with our mock data
-  nock('http://localhost').get('/api/v1/songs/').reply(200, songs)
+  nock('http://localhost').get('/api/v1/songs').reply(200, songs)
 
   render(
       <QueryClientProvider client={queryClient}>
