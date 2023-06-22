@@ -1,9 +1,34 @@
-function MySongs() {
+import { useQuery } from "react-query"
+// import { Song } from "../../../types/Song"
+import MySongs from "../../components/MySong/MySongs"
+import { getSongs } from "../../apis/songs"
+import { useAuth0 } from "@auth0/auth0-react"
+
+
+function MySongsPage() {
+  
+  const { getAccessTokenSilently } = useAuth0()
+  const {isLoading, data} = useQuery('getSongs', async () => {
+    const token = await getAccessTokenSilently()    
+    return await getSongs(token)
+  })  
+  
+  function handleEditSong() {    
+  }
+  
+  function handleDeleteSong() {    
+  }
+  
+
   return (
     <div>
-      <h1>My Songs</h1>
+      {!isLoading &&   
+      data &&   
+      <MySongs songs={data}  handleEditSong={handleEditSong}
+        handleDeleteSong={() => {handleDeleteSong}}/>
+      }
     </div>
   )
 }
 
-export default MySongs
+export default MySongsPage
