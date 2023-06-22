@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: `http://localhost:${process.env.PORT || 3000}`,
+        target: `https://rcmndr-production.up.railway.app`,
         changeOrigin: true,
       },
     },
