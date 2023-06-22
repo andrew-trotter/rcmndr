@@ -20,7 +20,6 @@ const MySongs = lazy(() => import('./Pages/MySongs/MySongsPage'))
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
-    
     <Route index element={<Home />} />
     <Route
       path="find-friends"

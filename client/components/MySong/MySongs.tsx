@@ -1,5 +1,5 @@
-import { Song } from "../../../types/Song"
-import SongListItem from "../SongListItem/SongListItem"
+import { Song } from '../../../types/Song'
+import SongListItem from '../SongListItem/SongListItem'
 
 interface Props {
   songs: Song[]
@@ -13,14 +13,20 @@ function MySongs(props: Props) {
   return (
     <div className="p-4">
       <h1 className="text-4xl font-semibold text-white mb-2">Brenegade</h1>
-      <p className="text-white font-medium ">These are the tracks you have recommended</p>
+      <p className="text-white font-medium ">
+        These are the tracks you have recommended
+      </p>
 
-      {songs.map(song => {
+      {songs.map((song) => {
         return (
-          <SongListItem key={song.title} song={song} handleEditSong={handleEditSong} handleDeleteSong={handleDeleteSong} />
+          <SongListItem
+            key={song.title}
+            song={song}
+            handleEditSong={handleEditSong}
+            handleDeleteSong={handleDeleteSong}
+          />
         )
       })}
-
     </div>
   )
 }

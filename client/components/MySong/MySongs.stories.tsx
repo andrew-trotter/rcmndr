@@ -24,19 +24,22 @@ const songs: Song[] = [
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
-  },{
+  },
+  {
     id: '1',
     title: 'Song Title',
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
-  },{
+  },
+  {
     id: '1',
     title: 'Song Title',
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
-  },{
+  },
+  {
     id: '1',
     title: 'Song Title',
     artist: 'Song Artist',

@@ -48,10 +48,16 @@ export async function getFriends(userId: string) {
 //GET songs by userId
 export async function getSongs(userId: string) {
   return (await db('songs')
-    .join('users', 'users.auth0_id', 'songs.user_id' ) 
-    .select('users.auth0_id as id', 'songs.title', 'songs.artist', 'songs.genre', 'songs.link', 'songs.comments')
+    .join('users', 'users.auth0_id', 'songs.user_id')
+    .select(
+      'users.auth0_id as id',
+      'songs.title',
+      'songs.artist',
+      'songs.genre',
+      'songs.link',
+      'songs.comments'
+    )
     .where('user_id', userId)) as Song[]
-  
 }
 
 // this db function searches for users that are not already being followed by the user

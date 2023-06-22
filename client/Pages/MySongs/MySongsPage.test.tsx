@@ -1,5 +1,5 @@
 //@vitest-environment jsdom
-import { expect, test, vi, afterEach } from 'vitest'
+import { expect, test, vi, beforeEach } from 'vitest'
 
 import { cleanup, render, screen } from '@testing-library/react'
 import matchers from '@testing-library/jest-dom/matchers'
@@ -16,34 +16,14 @@ expect.extend(matchers)
 vi.mock('./apis/songs')
 vi.mock('@auth0/auth0-react')
 
-afterEach(cleanup)
-
-test('MySongsPage component shows title', async () => {
-
-  (auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
-    isAuthenticated: true,
-    isLoading: false,
-    getAccessTokenSilently: vi.fn()
-  })
-
-  render(
-    <QueryClientProvider client={queryClient}>
-      <MySongsPage />
-    </QueryClientProvider>
-)
-
-  const title = await screen.getByText(`I'm the My Songs Page`)
-  expect(title.textContent).toBe(`I'm the My Songs Page`)
+beforeEach(cleanup)
+;(auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
+  isAuthenticated: true,
+  isLoading: false,
+  getAccessTokenSilently: vi.fn(),
 })
 
-test.only('MySongsPage fetches a song array', async () => {
-
-  (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
-    isAuthenticated: true,
-    isLoading: false,
-    getAccessTokenSilently: vi.fn()
-  })
-
+test('MySongsPage fetches a song array', async () => {
   const songs: Song[] = [
     {
       id: '1',
@@ -65,14 +45,13 @@ test.only('MySongsPage fetches a song array', async () => {
   nock('http://localhost').get('/api/v1/songs').reply(200, songs)
 
   render(
-      <QueryClientProvider client={queryClient}>
-        <MySongsPage />
-      </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <MySongsPage />
+    </QueryClientProvider>
   )
-    
-    const headings = await screen.findAllByRole('heading', { level: 3 })
-    expect(headings).toHaveLength(2)
-    expect(headings[0].textContent).toMatch('Song Title')
-    expect(headings[1].textContent).toMatch('Song Title2')
 
+  const headings = await screen.findAllByRole('heading', { level: 3 })
+  expect(headings).toHaveLength(2)
+  expect(headings[0].textContent).toMatch('Song Title')
+  expect(headings[1].textContent).toMatch('Song Title2')
 })

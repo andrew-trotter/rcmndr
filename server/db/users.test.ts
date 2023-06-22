@@ -41,5 +41,6 @@ describe('getSongs', () => {
     expect(songs[0]).toHaveProperty('artist')
     expect(songs[0]).toHaveProperty('genre')
     expect(songs[0]).toHaveProperty('link')
+    expect(songs[0]).toHaveProperty('comments')
   })
 })
