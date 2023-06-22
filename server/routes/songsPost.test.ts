@@ -18,6 +18,7 @@ describe('POST /api/v1/songs', () => {
       artist: 'banana man',
       genre: 'banana phobia',
       link: 'banana.com',
+      comment: 'cool bananas',
     }
 
     vi.mocked(db.insertSong).mockResolvedValue()
@@ -45,6 +46,7 @@ describe('POST /api/v1/songs', () => {
       artist: 'banana man',
       genre: 'banana phobia',
       link: 'banana.com',
+      comment: 'cool bananas',
     }
 
     vi.mocked(db.insertSong).mockRejectedValue(new Error('test'))
@@ -57,6 +59,4 @@ describe('POST /api/v1/songs', () => {
       message: 'Unable to insert new song to database',
     })
   })
-
-
 })
