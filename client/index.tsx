@@ -14,7 +14,7 @@ import ProfilePage from './Pages/ProfilePage/ProfilePage'
 import Home from './Pages/Home/Home'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
-import MySongs from './Pages/MySongs/MySongs'
+import MySongs from './Pages/MySongs/MySongsPage'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
