@@ -18,7 +18,7 @@ describe('POST /api/v1/songs', () => {
       artist: 'banana man',
       genre: 'banana phobia',
       link: 'banana.com',
-      comment: 'cool bananas',
+      comments: 'cool bananas',
     }
 
     vi.mocked(db.insertSong).mockResolvedValue()
@@ -46,7 +46,7 @@ describe('POST /api/v1/songs', () => {
       artist: 'banana man',
       genre: 'banana phobia',
       link: 'banana.com',
-      comment: 'cool bananas',
+      comments: 'cool bananas',
     }
 
     vi.mocked(db.insertSong).mockRejectedValue(new Error('test'))

@@ -1,27 +1,27 @@
-import { Song, SongDraft } from '../../../types/Song'
+import { SongDraft } from '../../../types/Song'
 import Button from '../UI/Button/Button'
 import TextBox from '../UI/TextBox/TextBox'
 
 interface Props {
-  handleSubmit : (form : SongDraft) => void
+  handleSubmit: (form: SongDraft) => void
 }
 
-function AddSong(props : Props) {
-  function handleSubmit (e: React.FormEvent<HTMLFormElement>) {
+function AddSong(props: Props) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const title = formData.get('title') as string
     const artist = formData.get('artist') as string
-    const genre = formData.get('genre') as string | null
+    const genre = formData.get('genre') as string
     const link = formData.get('genre') as string | null
-    const comment =  formData.get('comment') as string
-    
+    const comments = formData.get('comments') as string
+
     const form = {
-      title : title,
-      artist : artist,
-      genre : genre,
-      link : link,
-      comment : comment
+      title: title,
+      artist: artist,
+      genre: genre,
+      link: link,
+      comments: comments,
     }
 
     props.handleSubmit(form)
@@ -70,11 +70,11 @@ function AddSong(props : Props) {
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="comment">Comment</label>
+          <label htmlFor="comments">Comment</label>
           <TextBox
             type="text"
-            name="comment"
-            id="comment"
+            name="comments"
+            id="comments"
             placeholder="What do you like about this song?"
           />
         </div>
