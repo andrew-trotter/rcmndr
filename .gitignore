@@ -1,6 +1,9 @@
 #tailwind
 main.css
 
+#storybook
+storybook-static
+
 # Logs
 logs
 *.log
