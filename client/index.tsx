@@ -13,13 +13,14 @@ import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
 import Home from './Pages/Home/Home'
 import Loading from './components/Loading/Loading'
-const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
-const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
-const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
-const MySongs = lazy(() => import('./Pages/MySongs/MySongsPage'))
+import ErrorPage from './Pages/ErrorPage/ErrorPage'
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage')) 
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
+const MySongs = lazy(() => import('./Pages/MySongs/MySongsPage')) 
 
 export const routes = createRoutesFromElements(
-  <Route path="/" element={<AppLayout />}>
+  <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
     <Route
       path="find-friends"
