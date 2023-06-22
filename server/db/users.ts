@@ -89,12 +89,6 @@ OR LOWER(s.genre) LIKE ?)
   return newUsersToFollow as Friend[]
 }
 
-export async function insertSong(songData: SongDraft) {
-  const { userId, ...rest } = songData
-  console.log(rest)
-  const newSong = {
-    user_id: userId,
-    ...rest,
-  }
-  await db('songs').insert(newSong)
+export async function insertSong(songData: SongDraft, userId: string) {
+  await db('songs').insert({ ...songData, user_id: userId })
 }

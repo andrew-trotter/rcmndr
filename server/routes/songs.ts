@@ -18,10 +18,10 @@ router.post('/', validateAccessToken, async (req, res) => {
       return
     }
 
-    const input = { ...req.body, userId: id }
+    const input = req.body
     const songData = songDraftSchema.parse(input)
 
-    usersDb.insertSong(songData)
+    usersDb.insertSong(songData, id)
     res.sendStatus(201)
   } catch (error) {
     if (error instanceof Error) {
