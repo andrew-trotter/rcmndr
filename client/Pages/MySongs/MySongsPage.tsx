@@ -22,6 +22,7 @@ function MySongsPage() {
 
   return (
     <div>
+      <p>I'm the My Songs Page</p>
       {!isLoading &&   
       data &&   
       <MySongs songs={data}  handleEditSong={handleEditSong}
