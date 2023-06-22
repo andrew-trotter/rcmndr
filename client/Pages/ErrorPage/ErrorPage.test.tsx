@@ -14,7 +14,11 @@ expect.extend(matchers)
 const user = userEvent.setup()
 
 test('If button is on the page', async () => {
-  render(<ErrorPage />)
+  render(
+    <MemoryRouter>
+      <ErrorPage />
+    </MemoryRouter>
+  )
 
   const button = screen.getByRole('button', {
     name: 'Home',
