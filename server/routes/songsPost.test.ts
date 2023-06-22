@@ -38,4 +38,25 @@ describe('POST /api/v1/songs', () => {
       .send(fakeSong)
     expect(response.status).toBe(400)
   })
+
+  it('should return 500 when no access token is passed', async () => {
+    const fakeSong: SongDraft = {
+      title: 'banana',
+      artist: 'banana man',
+      genre: 'banana phobia',
+      link: 'banana.com',
+    }
+
+    vi.mocked(db.insertSong).mockRejectedValue(new Error('test'))
+    const response = await request(server)
+      .post('/api/v1/songs')
+      .set('authorization', `Bearer ${getMockToken()}`)
+      .send(fakeSong)
+    expect(response.status).toBe(500)
+    expect(response.body).toEqual({
+      message: 'Unable to insert new song to database',
+    })
+  })
+
+
 })
