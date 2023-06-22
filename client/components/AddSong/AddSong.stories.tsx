@@ -14,7 +14,7 @@ export const MyAddSongForm: Story = {
   name: 'AddSong Form',
   render: () => (
     <Background>
-      <AddSong></AddSong>,
+      <AddSong handleSubmit={function handleSubmit() {}}></AddSong>,
     </Background>
   ),
 }
