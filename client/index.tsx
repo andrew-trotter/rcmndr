@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import {Suspense, lazy} from 'react'
+import { Suspense, lazy } from 'react'
 import {
   RouterProvider,
   createBrowserRouter,
@@ -13,30 +13,46 @@ import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
 import Home from './Pages/Home/Home'
 import Loading from './components/Loading/Loading'
-const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage')) 
-const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
-const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
-const MySongs = lazy(() => import('./Pages/MySongs/MySongs')) 
+import ErrorPage from './Pages/ErrorPage/ErrorPage'
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
+const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
 
 export const routes = createRoutesFromElements(
-  <Route path="/" element={<AppLayout />}>
-    
+  <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
     <Route
       path="find-friends"
-      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={FindFriends} /></Suspense>}
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={FindFriends} />
+        </Suspense>
+      }
     />
     <Route
       path="my-friends"
-      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={MyFriends} /></Suspense>}
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={MyFriends} />
+        </Suspense>
+      }
     />
     <Route
       path="profile"
-      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={ProfilePage} /></Suspense>}
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={ProfilePage} />
+        </Suspense>
+      }
     />
     <Route
       path="my-songs"
-      element={<Suspense fallback={<Loading/>}><ProtectedComponent component={MySongs} /></Suspense>}
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={MySongs} />
+        </Suspense>
+      }
     />
   </Route>
 )
