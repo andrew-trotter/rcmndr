@@ -18,6 +18,7 @@ const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
 const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
 const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
 const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
+const ScanQR = lazy(() => import('./Pages/ScanQR/ScanQR'))
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -51,6 +52,14 @@ export const routes = createRoutesFromElements(
       element={
         <Suspense fallback={<Loading />}>
           <ProtectedComponent component={MySongs} />
+        </Suspense>
+      }
+    />
+    <Route
+      path="scan"
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={ScanQR} />
         </Suspense>
       }
     />
