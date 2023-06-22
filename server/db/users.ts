@@ -45,6 +45,7 @@ export async function getFriends(userId: string) {
     .where('user_id', userId)) as Friend[]
 }
 
+//GET songs by userId
 export async function getSongs(userId: string) {
   return (await db('songs')
     .join('users', 'users.auth0_id', 'songs.user_id' ) 
