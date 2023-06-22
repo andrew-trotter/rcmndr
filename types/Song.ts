@@ -5,7 +5,7 @@ export const songDraftSchema = z.object({
   artist: z.string(),
   genre: z.string().nullable(),
   link: z.string().nullable(),
-  userId : z.string()
+  userId: z.string(),
 })
 
 export const song = songDraftSchema.extend({
