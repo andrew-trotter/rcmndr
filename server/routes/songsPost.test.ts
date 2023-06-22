@@ -27,4 +27,15 @@ describe('POST /api/v1/songs', () => {
       .send(fakeSong)
     expect(response.status).toBe(201)
   })
+
+  it('should return 400 if the body does not match the zod schemea', async () => {
+    const fakeSong = {}
+
+    vi.mocked(db.insertSong).mockResolvedValue()
+    const response = await request(server)
+      .post('/api/v1/songs')
+      .set('authorization', `Bearer ${getMockToken()}`)
+      .send(fakeSong)
+    expect(response.status).toBe(400)
+  })
 })

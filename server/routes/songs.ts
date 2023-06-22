@@ -25,7 +25,7 @@ router.post('/', validateAccessToken, async (req, res) => {
     res.sendStatus(201)
   } catch (error) {
     if (error instanceof Error) {
-      res.status(500).json({ error: 'oops something went wrong' })
+      res.status(400).json({ error: 'oops something went wrong' })
     }
   }
 })
