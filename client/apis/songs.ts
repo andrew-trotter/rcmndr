@@ -11,11 +11,10 @@ export async function getSongs(token: string) {
   return response.body as Song[]
 }
 
-export async function addSong(form: SongDraft | Song, token: string) {
+export async function insertSong(form: SongDraft | Song, token: string) {
   await request
     .post(baseUrl)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send(form)
-  
 }
