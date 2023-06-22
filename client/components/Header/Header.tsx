@@ -2,6 +2,7 @@ import { Suspense, lazy, useState } from 'react'
 
 import Logo from '../Logo/Logo'
 import Loading from '../Loading/Loading'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Nav = lazy(() => import('../Nav/Nav'))
 
 function Header() {
@@ -14,6 +15,7 @@ function Header() {
   return (
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
+      <LoadingSpinner />
       {!navOpened && (
         <div>
           <button onClick={toggleMenu}>
@@ -37,9 +39,9 @@ function Header() {
           navOpened ? 'opacity-100' : 'hidden'
         }`}
       >
-        <Suspense fallback={<Loading />}>        
+        <Suspense fallback={<Loading />}>
           <Nav toggleMenu={toggleMenu} />
-      </Suspense>
+        </Suspense>
       </nav>
     </div>
   )
