@@ -5,15 +5,15 @@ import TextBox from '../UI/TextBox/TextBox'
 function AddSong() {
   return (
     <div>
-      <form /*onSubmit={handleSubmit}*/ className="space-y-4 p-4">
+      <form /*onSubmit={handleSubmit}*/ className="space-y-4 p-4 text-white">
         <div className="space-y-2">
-          <label htmlFor="title">Title *</label>
+          <label htmlFor="title">Song title *</label>
           <TextBox
             type="text"
             name="title"
             id="title"
             required
-            /*defaultValue={props.profile?.nickname}*/
+            placeholder="The full title of the song"
           />
         </div>
         <div className="space-y-1">
@@ -23,7 +23,7 @@ function AddSong() {
             name="artist"
             id="artist"
             required
-            /* defaultValue={props.profile?.firstName}*/
+            placeholder="Name of the artist / singer / group"
           />
         </div>
         <div className="space-y-2">
@@ -33,7 +33,7 @@ function AddSong() {
             name="genre"
             id="genre"
             required
-            /*defaultValue={props.profile?.lastName}*/
+            placeholder="Genre of music"
           />
         </div>
         <div className="space-y-2">
@@ -42,7 +42,7 @@ function AddSong() {
             type="text"
             name="link"
             id="link"
-            /*defaultValue={props.profile?.lastName}*/
+            placeholder="A link so others can listen (optional)"
           />
         </div>
         <div className="space-y-2">
@@ -51,7 +51,7 @@ function AddSong() {
             type="text"
             name="comment"
             id="comment"
-            /*defaultValue={props.profile?.lastName}*/
+            placeholder="What do you like about this song?"
           />
         </div>
         <div className="mx-auto text-center">
