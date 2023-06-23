@@ -1,5 +1,9 @@
+import { useParams } from 'react-router-dom'
+
 function ConfirmScan() {
-  return <p>QR code scanned successfully!</p>
+  const code = useParams().code as string
+  console.log(code)
+  return <p>{code}</p>
 }
 
 export default ConfirmScan
