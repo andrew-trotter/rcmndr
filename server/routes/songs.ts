@@ -1,6 +1,6 @@
 import express from 'express'
 import { validateAccessToken } from '../auth0'
-import * as db from '../db/users'
+import * as db from '../db/songs'
 import { logError } from '../logger'
 
 const router = express.Router()
