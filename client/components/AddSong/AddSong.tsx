@@ -13,7 +13,7 @@ function AddSong(props: Props) {
     const title = formData.get('title') as string
     const artist = formData.get('artist') as string
     const genre = formData.get('genre') as string
-    const link = formData.get('genre') as string | null
+    const link = formData.get('link') as string | null
     const comments = formData.get('comments') as string
 
     const form = {
