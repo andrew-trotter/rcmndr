@@ -22,7 +22,6 @@ function Songs() {
   async function handleSubmit(form: SongDraft) {
     const token = await getAccessTokenSilently()
     mutation.mutate({ form, token })
-    navigate('/my-songs')
   }
 
   if (isLoading) {
