@@ -20,7 +20,7 @@ function MySongs(props: Props) {
       {songs.map((song) => {
         return (
           <SongListItem
-            key={song.title}
+            key={song.id}
             song={song}
             handleEditSong={handleEditSong}
             handleDeleteSong={handleDeleteSong}

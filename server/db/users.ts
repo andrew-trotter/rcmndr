@@ -1,7 +1,6 @@
 import db from './connection'
 import { Friend } from '../../types/User'
 import { Profile, ProfileDraft } from '../../types/Profile'
-import { Song } from '../../types/Song'
 
 export async function getUser(auth0Id: string) {
   return (await db('users')
@@ -43,21 +42,6 @@ export async function getFriends(userId: string) {
     .join('users', 'users.auth0_id', 'following_list.following_id')
     .select('users.auth0_id as id', 'nickname', 'first_name as firstName')
     .where('user_id', userId)) as Friend[]
-}
-
-//GET songs by userId
-export async function getSongs(userId: string) {
-  return (await db('songs')
-    .join('users', 'users.auth0_id', 'songs.user_id')
-    .select(
-      'users.auth0_id as id',
-      'songs.title',
-      'songs.artist',
-      'songs.genre',
-      'songs.link',
-      'songs.comments'
-    )
-    .where('user_id', userId)) as Song[]
 }
 
 // this db function searches for users that are not already being followed by the user

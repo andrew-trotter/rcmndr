@@ -21,7 +21,7 @@ function SongListItem(props: Props) {
         <h4 className="text-xs text-lightPurple">{song.artist}</h4>
       </div>
       <div className="flex flex-row gap-2 self-center flex-none">
-        <button onClick={() => handleEditSong(song.id)}>
+        <button id="editButton" onClick={() => handleEditSong(song.id)}>
           <Icon>
             <i className="fa-solid fa-pen" />
           </Icon>

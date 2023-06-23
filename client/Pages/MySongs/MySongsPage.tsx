@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 import MySongs from '../../components/MySong/MySongs'
 import { getSongs } from '../../apis/songs'
 import { useAuth0 } from '@auth0/auth0-react'
+import { logError } from '../../../server/logger'
 
 function MySongsPage() {
   const { getAccessTokenSilently } = useAuth0()
@@ -10,7 +11,9 @@ function MySongsPage() {
     return await getSongs(token)
   })
 
-  function handleEditSong() {}
+  function handleEditSong() {
+    logError('edit not yet implemented')
+  }
 
   function handleDeleteSong() {}
 
