@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import nock from 'nock'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
-import Songs from './Songs'
+import AddSong from './AddSong'
 import { renderComponent } from '../../test-utils'
 
 vi.mock('../../apis/songs')
@@ -21,11 +21,11 @@ test('When the form is submitted, the api function should be called with the for
     comments: 'This song is amazing',
   }
 
-  ;(auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
-    isAuthenticated: true,
-    isLoading: false,
-    getAccessTokenSilently: vi.fn(),
-  })
+    ; (auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
+      isAuthenticated: true,
+      isLoading: false,
+      getAccessTokenSilently: vi.fn(),
+    })
 
   nock('http://localhost').post('/api/v1/songs', insertedSong).reply(201)
 
@@ -37,7 +37,7 @@ test('When the form is submitted, the api function should be called with the for
       >
         <Routes>
           <Route path="/my-songs" element={<span>my songs</span>} />
-          <Route path="/add-song" element={<Songs />} />
+          <Route path="/add-song" element={<AddSong />} />
         </Routes>
       </MemoryRouter>
     </QueryClientProvider>
