@@ -28,8 +28,12 @@ function Header() {
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
       {(isFetching > 0 || isLoading) && (
-        <div>
-          <img src="spinner.svg" alt="loading spinner" className="w-20 h-20" />
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-20">
+          <img
+            src="spinner.svg"
+            alt="loading spinner"
+            className="w-full h-full"
+          />
         </div>
       )}
       {!navOpened && (
