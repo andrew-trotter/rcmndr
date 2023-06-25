@@ -14,6 +14,7 @@ function Header() {
   return (
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
+      <div><img src="spinner.svg" alt="loading spinner"></img></div>
       {!navOpened && (
         <div>
           <button onClick={toggleMenu}>
@@ -24,6 +25,7 @@ function Header() {
           </span>
         </div>
       )}
+
       {navOpened && (
         <button onClick={toggleMenu}>
           <i
@@ -37,9 +39,9 @@ function Header() {
           navOpened ? 'opacity-100' : 'hidden'
         }`}
       >
-        <Suspense fallback={<Loading />}>        
+        <Suspense fallback={<Loading />}>
           <Nav toggleMenu={toggleMenu} />
-      </Suspense>
+        </Suspense>
       </nav>
     </div>
   )
