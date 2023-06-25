@@ -1,4 +1,5 @@
-import { Suspense, lazy, useState } from 'react'
+import { Suspense, lazy, useState, useEffect } from 'react'
+import { useIsFetching } from 'react-query'
 
 import Logo from '../Logo/Logo'
 import Loading from '../Loading/Loading'
@@ -6,21 +7,31 @@ const Nav = lazy(() => import('../Nav/Nav'))
 
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const isFetching = useIsFetching()
 
   function toggleMenu() {
-    setNavOpened(() => !navOpened)
+    setNavOpened((prevNavOpened) => !prevNavOpened)
   }
+
+  useEffect(() => {
+    // Simulate loading state
+    const timeout = setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+
+    // Clean up the timeout on component unmount
+    return () => clearTimeout(timeout)
+  }, [])
 
   return (
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
-      <div>
-        <img
-          src="spinner.svg"
-          alt="loading spinner"
-          className="w-20 h-20"
-        ></img>
-      </div>
+      {(isFetching > 0 || isLoading) && (
+        <div>
+          <img src="spinner.svg" alt="loading spinner" className="w-20 h-20" />
+        </div>
+      )}
       {!navOpened && (
         <div>
           <button onClick={toggleMenu}>
