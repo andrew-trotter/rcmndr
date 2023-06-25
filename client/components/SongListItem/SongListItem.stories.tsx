@@ -17,6 +17,7 @@ const song: Song = {
   artist: 'Song Artist',
   genre: 'Song Genre',
   link: 'https://www.youtube.com/watch?v=1',
+  comments: 'very cool',
 }
 
 export const songListItem: Story = {

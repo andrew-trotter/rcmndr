@@ -18,6 +18,7 @@ const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
 const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
 const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
 const MySongs = lazy(() => import('./Pages/MySongs/MySongsPage')) 
+const AddSong = lazy(() => import('./Pages/AddSong/AddSong'))
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -53,6 +54,10 @@ export const routes = createRoutesFromElements(
           <ProtectedComponent component={MySongs} />
         </Suspense>
       }
+    />
+    <Route
+      path="add-song"
+      element={<ProtectedComponent component={AddSong} />}
     />
   </Route>
 )
