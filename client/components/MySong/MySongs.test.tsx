@@ -18,7 +18,7 @@ test('renders MySongs component', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
-      comments: 'Comment'
+      comments: 'Comment',
     },
   ]
 
@@ -44,7 +44,7 @@ test('songs are passed as props are rendered', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
-      comments: 'Comment'
+      comments: 'Comment',
     },
   ]
 
@@ -70,7 +70,7 @@ test('handleEditSong is called', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
-      comments: 'Comment'
+      comments: 'Comment',
     },
   ]
 
@@ -95,7 +95,7 @@ test('handleDeleteSong is called', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
-      comments: 'Comment'
+      comments: 'Comment',
     },
   ]
 
