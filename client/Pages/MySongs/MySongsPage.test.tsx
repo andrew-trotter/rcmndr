@@ -31,6 +31,7 @@ test('MySongsPage fetches a song array', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
+      comments: 'comment',
     },
     {
       id: '2',
@@ -38,6 +39,7 @@ test('MySongsPage fetches a song array', async () => {
       artist: 'Song Artist2',
       genre: 'Song Genre2',
       link: 'https://www.youtube.com/watch?v=2',
+      comments: 'comment',
     },
   ]
 
@@ -50,8 +52,11 @@ test('MySongsPage fetches a song array', async () => {
     </QueryClientProvider>
   )
 
-  const headings = await screen.findAllByRole('heading', { level: 3 })
-  expect(headings).toHaveLength(2)
-  expect(headings[0].textContent).toMatch('Song Title')
-  expect(headings[1].textContent).toMatch('Song Title2')
+  const songTitles = await screen.findAllByRole('heading', { level: 3 })
+  const artists = await screen.findAllByRole('heading', { level: 4 })
+  expect(songTitles).toHaveLength(2)
+  expect(songTitles[0].textContent).toMatch('Song Title')
+  expect(songTitles[1].textContent).toMatch('Song Title2')
+  expect(artists[0].textContent).toMatch('Song Artist')
+  expect(artists[1].textContent).toMatch('Song Artist')
 })

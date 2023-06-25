@@ -32,6 +32,8 @@ test('renders MySongs component', async () => {
 
   const result = screen.getByText('These are the songs you have recommended')
   expect(result.textContent).toBe('These are the songs you have recommended')
+  const songTitle = screen.getByText('Song Title')
+  expect(songTitle.textContent).toBe('Song Title')
 })
 
 test('songs are passed as props are rendered', async () => {
@@ -54,10 +56,10 @@ test('songs are passed as props are rendered', async () => {
     />
   )
 
-  const result1 = screen.getByText('Song Title')
-  expect(result1.textContent).toBe('Song Title')
-  const result2 = screen.getByText('Song Artist')
-  expect(result2.textContent).toBe('Song Artist')
+  const songTitle = screen.getByText('Song Title')
+  expect(songTitle.textContent).toBe('Song Title')
+  const songArtist = screen.getByText('Song Artist')
+  expect(songArtist.textContent).toBe('Song Artist')
 })
 
 test('handleEditSong is called', async () => {

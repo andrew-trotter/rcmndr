@@ -23,9 +23,7 @@ function MySongsPage() {
         <MySongs
           songs={data}
           handleEditSong={handleEditSong}
-          handleDeleteSong={() => {
-            handleDeleteSong
-          }}
+          handleDeleteSong={handleDeleteSong}
         />
       )}
     </div>
