@@ -3,14 +3,12 @@ import { expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import matchers from '@testing-library/jest-dom/matchers'
 
-import MySongs from '../../components/MySong/MySongs'
+import MySongs from './MySongs'
 
 import { Song } from '../../../types/Song'
 import { renderComponent } from '../../test-utils'
 
 expect.extend(matchers)
-vi.mock('./apis/songs')
-vi.mock('@auth0/auth0-react')
 
 test('renders MySongs component', async () => {
   const songs: Song[] = [
@@ -20,6 +18,7 @@ test('renders MySongs component', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
+      comments: 'Comment'
     },
   ]
 
@@ -31,8 +30,8 @@ test('renders MySongs component', async () => {
     />
   )
 
-  const result = screen.getByText('These are the tracks you have recommended')
-  expect(result.textContent).toBe('These are the tracks you have recommended')
+  const result = screen.getByText('These are the songs you have recommended')
+  expect(result.textContent).toBe('These are the songs you have recommended')
 })
 
 test('songs are passed as props are rendered', async () => {
@@ -43,6 +42,7 @@ test('songs are passed as props are rendered', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
+      comments: 'Comment'
     },
   ]
 
@@ -68,6 +68,7 @@ test('handleEditSong is called', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
+      comments: 'Comment'
     },
   ]
 
@@ -92,6 +93,7 @@ test('handleDeleteSong is called', async () => {
       artist: 'Song Artist',
       genre: 'Song Genre',
       link: 'https://www.youtube.com/watch?v=1',
+      comments: 'Comment'
     },
   ]
 

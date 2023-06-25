@@ -3,20 +3,22 @@ import request from 'supertest'
 import server from '../server'
 import * as db from '../db/songs'
 import { getMockToken } from './mockToken'
+import { Song } from '../../types/Song'
+import { logError } from '../logger'
 
 vi.mock('../db/songs')
 vi.mock('../logger.ts')
 
 describe('GET /api/v1/songs', () => {
   it('should return 200 with an array', async () => {
-    const fakeSongs = [
+    const fakeSongs: Song[] = [
       {
         id: '1',
-        user_id: 2,
         genre: 'songGenre',
         title: 'songsTitle',
         artist: 'songArtist',
         link: 'songLink',
+        comments: 'Comment'
       },
     ]
 
@@ -35,5 +37,7 @@ describe('GET /api/v1/songs', () => {
       .set('authorization', `Bearer ${getMockToken()}`)
     expect(response.status).toBe(500)
     expect(response.body).toEqual({ message: 'Unable to retrieve songs' })
+    expect(logError).toBeCalledWith('test')
   })
+  
 })
