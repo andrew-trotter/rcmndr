@@ -20,6 +20,7 @@ const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
 const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
 const ScanQR = lazy(() => import('./Pages/ScanQR/ScanQR'))
 const ConfirmScan = lazy(() => import('./Pages/ConfirmScan/ConfirmScan'))
+const ShowQR = lazy(() => import('./Pages/ShowQR/ShowQR'))
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -69,6 +70,14 @@ export const routes = createRoutesFromElements(
       element={
         <Suspense fallback={<Loading />}>
           <ProtectedComponent component={ConfirmScan} />
+        </Suspense>
+      }
+    />
+    <Route
+      path="show-qr"
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={ShowQR} />
         </Suspense>
       }
     />
