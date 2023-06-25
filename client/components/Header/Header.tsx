@@ -14,7 +14,13 @@ function Header() {
   return (
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
-      <div><img src="spinner.svg" alt="loading spinner"></img></div>
+      <div>
+        <img
+          src="spinner.svg"
+          alt="loading spinner"
+          className="w-20 h-20"
+        ></img>
+      </div>
       {!navOpened && (
         <div>
           <button onClick={toggleMenu}>
