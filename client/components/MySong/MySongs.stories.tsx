@@ -17,6 +17,7 @@ const songs: Song[] = [
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
+    comments: 'cool music',
   },
   {
     id: '1',
@@ -24,6 +25,7 @@ const songs: Song[] = [
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
+    comments: 'catchy song',
   },
   {
     id: '1',
@@ -31,6 +33,7 @@ const songs: Song[] = [
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
+    comments: 'briiliant song',
   },
   {
     id: '1',
@@ -38,6 +41,7 @@ const songs: Song[] = [
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
+    comments: 'lovely song',
   },
   {
     id: '1',
@@ -45,6 +49,7 @@ const songs: Song[] = [
     artist: 'Song Artist',
     genre: 'Song Genre',
     link: 'https://www.youtube.com/watch?v=1',
+    comments: 'nice beat',
   },
 ]
 
