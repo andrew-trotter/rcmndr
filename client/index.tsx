@@ -14,13 +14,15 @@ import ProtectedComponent from './components/UI/ProtectedComponent'
 import Home from './Pages/Home/Home'
 import Loading from './components/Loading/Loading'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
-const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
-const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
-const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
-const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
+
 const ScanQR = lazy(() => import('./Pages/ScanQR/ScanQR'))
 const ConfirmScan = lazy(() => import('./Pages/ConfirmScan/ConfirmScan'))
 const ShowQR = lazy(() => import('./Pages/ShowQR/ShowQR'))
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
+const MySongs = lazy(() => import('./Pages/MySongs/MySongsPage'))
+const AddSong = lazy(() => import('./Pages/AddSong/AddSong'))
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -66,6 +68,14 @@ export const routes = createRoutesFromElements(
       }
     />
     <Route
+      path="show-qr"
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={ShowQR} />
+        </Suspense>
+      }
+    />
+    <Route
       path="confirm-scan/:code"
       element={
         <Suspense fallback={<Loading />}>
@@ -74,10 +84,10 @@ export const routes = createRoutesFromElements(
       }
     />
     <Route
-      path="show-qr"
+      path="add-song"
       element={
         <Suspense fallback={<Loading />}>
-          <ProtectedComponent component={ShowQR} />
+          <ProtectedComponent component={AddSong} />
         </Suspense>
       }
     />

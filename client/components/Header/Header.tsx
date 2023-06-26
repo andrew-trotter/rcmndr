@@ -37,9 +37,9 @@ function Header() {
           navOpened ? 'opacity-100' : 'hidden'
         }`}
       >
-        <Suspense fallback={<Loading />}>        
+        <Suspense fallback={<Loading />}>
           <Nav toggleMenu={toggleMenu} />
-      </Suspense>
+        </Suspense>
       </nav>
     </div>
   )

@@ -1,13 +1,21 @@
 //@vitest-environment jsdom
-import { expect, test } from 'vitest'
-import { Suspense, lazy,  } from "react"
-import { render, screen, waitFor } from "@testing-library/react"
+import { expect, test, vi, afterEach } from 'vitest'
+import { Suspense, lazy } from 'react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import matchers from '@testing-library/jest-dom/matchers'
+
 import Loading from './components/Loading/Loading'
 
-const LazyComponent = lazy(() => import("./components/TestLazyComponent"))
+const LazyComponent = lazy(() => import('./components/TestLazyComponent'))
+
+expect.extend(matchers)
+vi.mock('./apis/songs')
+vi.mock('@auth0/auth0-react')
+
+afterEach(cleanup)
 
 function Main() {
-  return(
+  return (
     <div>
       <div>lazy loaded</div>
       <LazyComponent />
@@ -16,13 +24,13 @@ function Main() {
 }
 
 test('renders lazy', async () => {
-    render(
-    <Suspense fallback={<Loading/>}>
-        <Main />
+  render(
+    <Suspense fallback={<Loading />}>
+      <Main />
     </Suspense>
   )
   await waitFor(() => {
-  const result = screen.getByText('Test');
-    expect(result.textContent).toBe('Test');
-  });
-});
+    const result = screen.getByText('Test')
+    expect(result.textContent).toBe('Test')
+  })
+})
