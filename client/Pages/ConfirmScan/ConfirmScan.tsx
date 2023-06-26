@@ -14,7 +14,7 @@ function ConfirmScan() {
         />
       </div>
       <div className="text-lightPurple font-serif flex items-center flex-col mb-28">
-        <p className="mb-5">Sacn is Successful</p>
+        <p className="mb-5">Scan is Successful</p>
         <p>
           Would like to follow <span className="text-darkPink">{code}</span>?
         </p>

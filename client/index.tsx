@@ -14,7 +14,6 @@ import ProtectedComponent from './components/UI/ProtectedComponent'
 import Home from './Pages/Home/Home'
 import Loading from './components/Loading/Loading'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
-
 const ScanQR = lazy(() => import('./Pages/ScanQR/ScanQR'))
 const ConfirmScan = lazy(() => import('./Pages/ConfirmScan/ConfirmScan'))
 const ShowQR = lazy(() => import('./Pages/ShowQR/ShowQR'))
