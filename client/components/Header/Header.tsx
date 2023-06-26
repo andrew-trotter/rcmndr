@@ -2,18 +2,29 @@ import { Suspense, lazy, useState } from 'react'
 
 import Logo from '../Logo/Logo'
 import Loading from '../Loading/Loading'
+import { useIsBusy } from '../../hooks/useIsBusy'
 const Nav = lazy(() => import('../Nav/Nav'))
 
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
-
+  const isBusy = useIsBusy()
+  
   function toggleMenu() {
-    setNavOpened(() => !navOpened)
+    setNavOpened((prevNavOpened) => !prevNavOpened)
   }
 
   return (
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
+      {isBusy > 0 && (
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-20">
+          <img
+            src="spinner.svg"
+            alt="loading spinner"
+            className="w-full h-full"
+          />
+        </div>
+      )}
       {!navOpened && (
         <div>
           <button onClick={toggleMenu}>
@@ -24,6 +35,7 @@ function Header() {
           </span>
         </div>
       )}
+
       {navOpened && (
         <button onClick={toggleMenu}>
           <i
