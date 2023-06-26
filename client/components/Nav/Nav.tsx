@@ -33,6 +33,9 @@ function Nav(props: Props) {
           <button onClick={() => goTo('/my-songs')}>My songs</button>
         </li>
         <li>
+          <button onClick={() => goTo('/add-song')}>Add songs</button>
+        </li>
+        <li>
           <button onClick={() => goTo('/my-friends')}>My friends</button>
         </li>
         <li>

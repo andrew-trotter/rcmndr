@@ -7,7 +7,7 @@
     "start": "ts-node server/index.ts",
     "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "vite",
-    "dev:server": "nodemon server/index.ts",
+    "dev:server": "nodemon --watch server/index.ts",
     "dev:css": "tailwindcss -i client/styles/main.css -o public/main.css --watch",
     "test": "vitest",
     "build": "run-s vite:build build:css",

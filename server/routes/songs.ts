@@ -1,13 +1,32 @@
 import express from 'express'
-
 import { validateAccessToken } from '../auth0'
-import { song, songDraftSchema } from '../../types/Song'
-import * as usersDb from '../db/users'
+import * as db from '../db/songs'
 import { logError } from '../logger'
+import { songDraftSchema } from '../../types/Song'
+import * as usersDb from '../db/users'
+
 
 const router = express.Router()
 
 // GET /api/v1/songs
+router.get('/', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+
+  
+  if (!id) {
+    res.status(400).json({ message: 'Please provide an id' })
+    return
+  }
+  try {
+    const songs = await db.getSongs(id)
+    res.status(200).json(songs)
+  } catch (e) {
+    if (e instanceof Error) {
+      logError(e.message)
+      res.status(500).json({ message: 'Unable to retrieve songs' })
+    }
+  }
+})
 
 // POST /api/v1/songs
 
