@@ -14,10 +14,10 @@ import ProtectedComponent from './components/UI/ProtectedComponent'
 import Home from './Pages/Home/Home'
 import Loading from './components/Loading/Loading'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
-const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
-const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
-const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
-const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage')) 
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends')) 
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends')) 
+const MySongs = lazy(() => import('./Pages/MySongs/MySongsPage')) 
 const AddSong = lazy(() => import('./Pages/AddSong/AddSong'))
 
 export const routes = createRoutesFromElements(

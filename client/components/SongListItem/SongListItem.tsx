@@ -10,7 +10,7 @@ interface Props {
 function SongListItem(props: Props) {
   const { song, handleDeleteSong, handleEditSong } = props
   return (
-    <li className="list-none flex gap-4">
+    <li className="list-none flex gap-4 py-1.5">
       <div className="self-center flex-none">
         <Icon>
           <i className="fa-solid fa-play text-black" />
@@ -21,7 +21,7 @@ function SongListItem(props: Props) {
         <h4 className="text-xs text-lightPurple">{song.artist}</h4>
       </div>
       <div className="flex flex-row gap-2 self-center flex-none">
-        <button onClick={() => handleEditSong(song.id)}>
+        <button id="editButton" onClick={() => handleEditSong(song.id)}>
           <Icon>
             <i className="fa-solid fa-pen" />
           </Icon>

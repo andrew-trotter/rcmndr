@@ -1,7 +1,6 @@
 function TestLazyComponent() {
-
   return (
-    <div >
+    <div>
       <h1 className="text-xl font-semibold">Test</h1>
     </div>
   )
